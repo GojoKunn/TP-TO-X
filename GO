@@ -1,0 +1,23 @@
+function Contains(group, text)
+   if string.find(group, text) then
+       return true;
+   else
+       return false;
+   end
+end
+ 
+local Name = game:GetService('Players').LocalPlayer.Name;
+local ID = game:GetService('Players').LocalPlayer.userId;
+local Format = (Name..'|'..ID);
+local Whitelist = game:HttpGet('https://pastebin.com/raw/tzgwZjH1');-- requires pastebin link
+
+if Contains(Whitelist, Name) and Contains(Whitelist, ID) then
+print("SerephX loaded")
+    loadstring(game:HttpGet(("https://raw.githubusercontent.com/GojoKunn/xJevon/main/script.lua"), true))()
+else
+print("Not whitelisted :/")
+   game.StarterGui:SetCore("SendNotification", {
+    Title = "Whitelist";
+    Text = "You are not whitelisted bc YOU SHOULDNT HAVE IT"
+})
+end
